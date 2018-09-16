@@ -1,0 +1,21 @@
+# This is a YAML-formatted file.
+# Declare name/value pairs to be passed into your templates.
+# name: value
+global:
+  repo: YOUR_REPO
+
+hive-hms:
+  image: hive
+  count: 2
+  ps_mem: 8g
+  mem: 8Gi
+
+  hms_db_uri: YOUR_JDBC_URI
+  hms_db_username: YOUR_JDBC_USERNAME
+  hms_db_password: YOUR_JDBC_PASSWORD
+
+  log_level: INFO
+
+service:
+  name: hms-serv
+

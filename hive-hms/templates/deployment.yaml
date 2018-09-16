@@ -1,0 +1,74 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.hive-hms.count }}
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+      - image: {{ .Values.global.repo }}/{{ .Values.hive-hms.image }}
+        name: {{ template "fullname" . }}
+        securityContext:
+          allowPrivilegeEscalation: false
+        resources:
+          requests:
+            memory: "{{ .Values.hive-hms.mem }}"
+            cpu: "{{ .Values.hive-hms.cpu }}"
+        env:
+          - name: HMS_DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: metastore-db-secret
+                key: username
+          - name: HMS_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: metastore-db-secret
+                key: password
+          - name: HMS_DB_URI
+            valueFrom:
+              secretKeyRef:
+                name: metastore-db-secret
+                key: uri
+        volumeMounts:
+        - mountPath: /opt/barbarian/hadoop/etc/hadoop
+          name: yarn-cfg-volume
+        - name: hive-cfg-volume
+          mountPath: /opt/barbarian/hive/conf
+        - name: tez-cfg-volume
+          mountPath: /opt/barbarian/tez/conf
+        - name: slider-cfg-volume
+          mountPath: /opt/barbarian/slider/conf
+        ports:
+        - containerPort: 9083
+          name: server
+        command:
+        - sh
+        - -c
+        - "/opt/barbarian/control/start-metastore \
+          --zk_connect={{ .Values.zookeeper.service.name }} \
+          --rm_connect={{ .Values.yarn-rm.service.name }}"
+      volumes:
+      - name: yarn-cfg-volume
+        emptyDir: {}
+      - name: hive-cfg-volume
+        emptyDir: {}
+      - name: tez-cfg-volume
+        emptyDir: {}
+      - name: slider-cfg-volume
+        emptyDir: {}

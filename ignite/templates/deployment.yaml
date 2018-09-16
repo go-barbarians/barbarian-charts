@@ -1,0 +1,98 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.ignite.count }}
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - {{ template "fullname" . }}
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - image: {{ .Values.global.repo }}/{{ .Values.ignite.image }}
+        name: {{ template "fullname" . }}
+        securityContext:
+          allowPrivilegeEscalation: false
+        env:
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: aws-secret
+                key: access-key
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: aws-secret
+                key: secret-key
+          - name: AWS_S3_BUCKET
+            valueFrom:
+              secretKeyRef:
+                name: aws-bucket
+                key: aws-s3-bucket
+        volumeMounts:
+        - mountPath: /opt/barbarian/ignite/config
+          name: igfs-cfg-volume
+        - mountPath: /opt/barbarian/ignite/work
+          name: igfs-work-volume
+        - mountPath: /opt/barbarian/hadoop/etc/hadoop
+          name: hadoop-cfg-volume
+        resources:
+          requests:
+            memory: "{{ .Values.ignite.mem }}"
+            cpu: "{{ .Values.ignite.cpu }}"
+        ports:
+        - containerPort: 10500
+          name: server
+        command:
+        - sh
+        - -c
+        - "/opt/barbarian/control/start-ignite \
+          --conf_dir=/opt/barbarian/ignite/config \
+          --log_level={{ .Values.ignite.log_level }} \
+          --log_dir=/var/log/ignite \
+          --zk_connect={{ .Values.zookeeper.service.name }}"
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "/opt/barbarian/control/ignite-ready 10500"
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "/opt/barbarian/control/ignite-ready 10500"
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+      volumes:
+      - name: igfs-cfg-volume
+        emptyDir: {}
+      - name: hadoop-cfg-volume
+        emptyDir: {}
+      - name: igfs-work-volume
+        emptyDir: {}

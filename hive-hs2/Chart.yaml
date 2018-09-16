@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Barbarian Helm chart for Kubernetes
+name: hive-hs2
+version: 0.1.0-badh0.1.0
