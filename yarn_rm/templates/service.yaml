@@ -6,7 +6,16 @@ metadata:
     app: {{ template "fullname" . }}
 spec:
   ports:
-  - port: 10500
+  - port: 8050
     name: server
+  - port: 8088
+    name: webui-address
+  - port: 8025
+    name: tracker
+  - port: 8030
+    name: scheduler
+  - port: 8141
+    name: admin
+  clusterIP: None
   selector:
     app: {{ template "fullname" . }}

@@ -1,0 +1,9 @@
+dependencies:
+- name: zookeeper
+  repository: file://../zookeeper
+  version: 0.1.0-badh0.1.0
+- name: yarn_rm
+  repository: file://../yarn-rm
+  version: 0.1.0-badh0.1.0
+digest: sha256:a48edea69b8eceb7404c75f8c43c5737de71ada31fad6aabe913f4556027d803
+generated: 2018-09-17T19:06:55.69635965+02:00

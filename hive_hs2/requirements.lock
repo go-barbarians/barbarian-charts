@@ -1,0 +1,15 @@
+dependencies:
+- name: zookeeper
+  repository: file://../zookeeper
+  version: 0.1.0-badh0.1.0
+- name: yarn_rm
+  repository: file://../yarn-rm
+  version: 0.1.0-badh0.1.0
+- name: ignite
+  repository: file://../ignite
+  version: 0.1.0-badh0.1.0
+- name: hive_hms
+  repository: file://../hive-hms
+  version: 0.1.0-badh0.1.0
+digest: sha256:e2aa40f945149e8d3db0fc1b507236be6f758b572e8da8ea1e216ddcffecef32
+generated: 2018-09-17T19:09:54.770982414+02:00

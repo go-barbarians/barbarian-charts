@@ -2,18 +2,12 @@ dependencies:
   - name: zookeeper
     repository: file://../zookeeper
     version: 0.1.0-badh0.1.0
-  - name: ignite
-    repository: file://../ignite
-    version: 0.1.0-badh0.1.0
-  - name: yarn_nm
-    repository: file://../yarn-nm
-    version: 0.1.0-badh0.1.0
   - name: yarn_rm
     repository: file://../yarn-rm
     version: 0.1.0-badh0.1.0
+  - name: ignite
+    repository: file://../ignite
+    version: 0.1.0-badh0.1.0
   - name: hive_hms
     repository: file://../hive-hms
-    version: 0.1.0-badh0.1.0
-  - name: hive_hs2
-    repository: file://../hive-hs2
     version: 0.1.0-badh0.1.0

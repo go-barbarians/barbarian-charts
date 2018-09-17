@@ -4,14 +4,17 @@
 global:
   repo: YOUR_REPO
 
-zookeeper:
-  image: zookeeper
-  count: 5
-  cpu: 0.5
-  mem: 2Gi
-  ps_mem: 1g
+hive_hs2:
+  image: hive
+  count: 1
+  llapd_count: 4
+  ps_mem: 8g
+  mem: 8Gi
+  cpu: 1
+  llapd_mem: 24g
 
   log_level: INFO
 
 service:
-  name: zk-serv
+  name: hs2-serv
+

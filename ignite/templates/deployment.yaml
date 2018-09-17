@@ -39,17 +39,17 @@ spec:
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
               secretKeyRef:
-                name: {{ template "ignite.fullname" . }}
+                name: {{ template "fullname" . }}
                 key: access-key
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
-                name: {{ template "ignite.fullname" . }}
+                name: {{ template "fullname" . }}
                 key: secret-key
           - name: AWS_S3_BUCKET
             valueFrom:
               secretKeyRef:
-                name: {{ template "ignite.fullname" . }}
+                name: {{ template "fullname" . }}
                 key: aws-s3-bucket
         volumeMounts:
         - mountPath: /opt/barbarian/ignite/config

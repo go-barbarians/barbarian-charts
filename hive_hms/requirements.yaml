@@ -2,3 +2,6 @@ dependencies:
   - name: zookeeper
     repository: file://../zookeeper
     version: 0.1.0-badh0.1.0
+  - name: yarn_rm
+    repository: file://../yarn-rm
+    version: 0.1.0-badh0.1.0
