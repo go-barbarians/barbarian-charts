@@ -21,14 +21,14 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
       containers:
-      - image: {{ .Values.global.repo }}/{{ .Values.yarn-rm.image }}
+      - image: {{ .Values.global.repo }}/{{ .Values.yarn_rm.image }}
         name: {{ template "fullname" . }}
         securityContext:
           allowPrivilegeEscalation: false
         resources:
           requests:
-            memory: "{{ .Values.yarn-rm.mem }}"
-            cpu: "{{ .Values.yarn-rm.cpu }}"
+            memory: "{{ .Values.yarn_rm.mem }}"
+            cpu: "{{ .Values.yarn_rm.cpu }}"
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
           name: yarn-cfg-volume
@@ -49,7 +49,7 @@ spec:
         - "/opt/barbarian/control/start-yarn-rm \
           --zk_connect={{ .Values.zookeeper.service.name }} \
           --rm_connect={{ .Values.service.name }} \
-          --log_level={{ .Values.yarn-rm.log_level }} \
+          --log_level={{ .Values.yarn_rm.log_level }} \
           --log_dir=/var/log/hadoop"
       volumes:
       - name: yarn-cfg-volume
