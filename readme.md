@@ -1,8 +1,8 @@
 ### Barbarian
 https://barbarians.io/
 
-## Support tooling
-This repo contains the helm charts for the Barbarian big data system.
+## Helm Charts
+This repo contains the Helm charts for installing the Barbarian big data system on Kubernetes.
 
 ## Installing
 Install the charts with the following commands. Note that some configuration parameters must be supplied.
