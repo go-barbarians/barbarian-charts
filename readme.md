@@ -1,4 +1,7 @@
-### Barbarian
+# Barbarian
+Barbarian is the world's best cloud-first, cloud-agnostic big data system founded on Apache Hadoop for enterprise-ready parallel distributed data processing at scale.
+
+Read more at:
 https://barbarians.io/
 
 ## Helm Charts
