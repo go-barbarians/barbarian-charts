@@ -33,17 +33,17 @@ spec:
           - name: HMS_DB_USERNAME
             valueFrom:
               secretKeyRef:
-                name: metastore-db-secret
+                name: {{ template "hive-hms.fullname" . }}
                 key: username
           - name: HMS_DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: metastore-db-secret
+                name: {{ template "hive-hms.fullname" . }}
                 key: password
           - name: HMS_DB_URI
             valueFrom:
               secretKeyRef:
-                name: metastore-db-secret
+                name:{{ template "hive-hms.fullname" . }}
                 key: uri
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
