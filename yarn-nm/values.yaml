@@ -4,7 +4,7 @@
 global:
   repo: YOUR_REPO
 
-yarn-nm:
+yarn_nm:
   image: yarn-nm
   count: 5
   cpu: 8
