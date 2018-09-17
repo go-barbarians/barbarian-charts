@@ -8,7 +8,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  replicas: {{ .Values.yarn-nm.count }}
+  replicas: {{ .Values.yarn_nm.count }}
   updateStrategy:
     type: RollingUpdate
   podManagementPolicy: Parallel
@@ -21,14 +21,14 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
       containers:
-      - image: {{ .Values.global.repo }}/{{ .Values.yarn-nm.image }}
+      - image: {{ .Values.global.repo }}/{{ .Values.yarn_nm.image }}
         name: {{ template "fullname" . }}
         securityContext:
           allowPrivilegeEscalation: false
         resources:
           requests:
-            memory: "{{ .Values.yarn-nm.mem }}"
-            cpu: "{{ .Values.yarn-nm.cpu }}"
+            memory: "{{ .Values.yarn_nm.mem }}"
+            cpu: "{{ .Values.yarn_nm.cpu }}"
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
           name: yarn-cfg-volume
@@ -54,9 +54,9 @@ spec:
         - -c
         - "/opt/barbarian/control/start-yarn-nm \
           --zk_connect={{ .Values.zookeeper.service.name }} \
-          --rm_connect={{ .Values.yarn-rm.service.name }} \
+          --rm_connect={{ .Values.yarn_rm.service.name }} \
           --igfs_connect={{ .Values.ignite.service.name }} \
-          --log_level={{ .Values.yarn-nm-log_level }} \
+          --log_level={{ .Values.yarn_nm.log_level }} \
           --log_dir=/var/log/hadoop"
       volumes:
       - name: yarn-cfg-volume
