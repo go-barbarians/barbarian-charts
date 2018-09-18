@@ -6,5 +6,5 @@ dependencies:
     repository: file://../ignite
     version: 0.1.0-badh0.1.0
   - name: yarn_rm
-    repository: file://../yarn-rm
+    repository: file://../yarn_rm
     version: 0.1.0-badh0.1.0

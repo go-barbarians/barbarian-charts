@@ -6,16 +6,19 @@ dependencies:
   repository: file://../ignite
   version: 0.1.0-badh0.1.0
 - name: yarn_nm
-  repository: file://../yarn-nm
+  repository: file://../yarn_nm
   version: 0.1.0-badh0.1.0
 - name: yarn_rm
-  repository: file://../yarn-rm
+  repository: file://../yarn_rm
   version: 0.1.0-badh0.1.0
 - name: hive_hms
-  repository: file://../hive-hms
+  repository: file://../hive_hms
   version: 0.1.0-badh0.1.0
 - name: hive_hs2
-  repository: file://../hive-hs2
+  repository: file://../hive_hs2
   version: 0.1.0-badh0.1.0
-digest: sha256:4ecdf3962829bc7914a633c76ee057427e33c44ab27903e5d10ff4c350cdebb6
-generated: 2018-09-17T19:12:58.005607562+02:00
+- name: mariadb
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 4.4.2
+digest: sha256:238f3e8232435eaca5b7e530dc89b075141a5dcb703019cfaa4e84fe5eb553f5
+generated: 2018-09-18T08:41:42.003002876+02:00

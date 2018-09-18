@@ -3,5 +3,9 @@ dependencies:
     repository: file://../zookeeper
     version: 0.1.0-badh0.1.0
   - name: yarn_rm
-    repository: file://../yarn-rm
+    repository: file://../yarn_rm
     version: 0.1.0-badh0.1.0
+  - name: mariadb
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    version: 4.x.x
+    condition: hive_hms.db_auto

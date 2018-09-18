@@ -31,20 +31,27 @@ spec:
             cpu: "{{ .Values.hive_hms.cpu }}"
         env:
           - name: HMS_DB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "fullname" . }}
-                key: username
+          {{- if .Values.hive_hms.db_auto }}
+            value: {{ .Values.mariadb.db.user | quote }}
+          {{- else }}
+            value: {{ .Values.hive_hms.db_user | quote }}
+          {{- end }}
           - name: HMS_DB_PASSWORD
             valueFrom:
               secretKeyRef:
+              {{- if .Values.hive_hms.db_auto }}
+                name: {{ template "mariadb.fullname" . }}
+                key: mariadb-password
+              {{- else }}
                 name: {{ template "fullname" . }}
                 key: password
+              {{- end }}
           - name: HMS_DB_URI
-            valueFrom:
-              secretKeyRef:
-                name:{{ template "fullname" . }}
-                key: uri
+          {{- if .Values.hive_hms.db_auto }}
+            value: {{ printf "jdbc:mariadb://%s:3306/%s" (include "mariadb.fullname" .) .Values.mariadb.db.name | quote }}
+          {{- else }}
+            value: {{ .Values.hive_hms.db_uri | quote }}
+          {{- end }}
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
           name: yarn-cfg-volume

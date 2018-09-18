@@ -3,7 +3,10 @@ dependencies:
   repository: file://../zookeeper
   version: 0.1.0-badh0.1.0
 - name: yarn_rm
-  repository: file://../yarn-rm
+  repository: file://../yarn_rm
   version: 0.1.0-badh0.1.0
-digest: sha256:a48edea69b8eceb7404c75f8c43c5737de71ada31fad6aabe913f4556027d803
-generated: 2018-09-17T19:06:55.69635965+02:00
+- name: mariadb
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 4.4.2
+digest: sha256:1c931f2d8500b5928fb4f5ec20f86deff1b2d6a1fd9858ddc40be2fba02fbfb9
+generated: 2018-09-18T08:50:24.698148345+02:00
