@@ -13,6 +13,9 @@ yarn_nm:
   container_vcpu: 8
 
   log_level: INFO
+  log_dir: /var/log/hadoop
+
+  hdfs_conf_dir: /opt/barbarian/hadoop/etc/hadoop
 
 service:
   name: yarn-nm-serv

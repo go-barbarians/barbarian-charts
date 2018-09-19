@@ -52,18 +52,16 @@ spec:
         command:
         - sh
         - -c
-        - "/opt/barbarian/control/start-yarn-nm \
-          --zk_connect={{ .Values.zookeeper.service.name }} \
-          --rm_connect={{ .Values.yarn_rm.service.name }} \
-          --igfs_connect={{ .Values.ignite.service.name }} \
-          --log_level={{ .Values.yarn_nm.log_level }} \
-          --log_dir=/var/log/hadoop"
+        - "/opt/barbarian/control/start-yarn-nm"
       volumes:
       - name: yarn-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-hadoop-conf
       - name: datadir
         emptyDir: {}
       - name: slider-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-slider-conf
       - name: tez-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-tez-conf

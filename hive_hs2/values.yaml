@@ -7,13 +7,16 @@ global:
 hive_hs2:
   image: hive
   count: 1
-  llapd_count: 4
   ps_mem: 8g
   mem: 8Gi
   cpu: 1
-  llapd_mem: 24g
+
+  llapd_enabled: true
+  llapd_count: 4
+  llapd_mem: 16g
 
   log_level: INFO
+  log_dir: /var/log/hive
 
 service:
   name: hs2-serv

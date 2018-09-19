@@ -1,14 +1,12 @@
-{{- if regexMatch "^s3a.*$" .Values.ignite.secondary_fs_uri  }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "fullname" . }}-hadoop-conf
+  name: {{ template "fullname" . }}-tez-conf
   labels:
     app: {{ template "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-data: |-
-  s3-site.xml: |-
-{{ tpl (.Files.Get "files/hadoop/s3-site.xml") . | indent 4 }}
-{{ end }}
+data:
+  tez-site.xml: |-
+{{ tpl (.Files.Get "files/tez/tez-site.xml") . | indent 4 }}

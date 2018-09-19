@@ -1,14 +1,12 @@
-{{- if not .Values.hive_hms.db_auto }}
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
-  name: {{ template "fullname" . }}
+  name: {{ template "fullname" . }}-tez-conf
   labels:
     app: {{ template "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-type: Opaque
 data:
-  password: {{ .Values.hive_hms.db_password | quote }}
-{{- end }}
+  tez-site.xml: |-
+{{ tpl (.Files.Get "files/tez/tez-site.xml") . | indent 4 }}

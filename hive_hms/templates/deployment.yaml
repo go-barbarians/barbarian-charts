@@ -67,15 +67,17 @@ spec:
         command:
         - sh
         - -c
-        - "/opt/barbarian/control/start-metastore \
-          --zk_connect={{ .Values.zookeeper.service.name }} \
-          --rm_connect={{ .Values.yarn_rm.service.name }}"
+        - "/opt/barbarian/control/start-metastore"
       volumes:
       - name: yarn-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-hadoop-conf
       - name: hive-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-hive-conf
       - name: tez-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-tez-conf
       - name: slider-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-slider-conf

@@ -46,11 +46,7 @@ spec:
         command:
         - sh
         - -c
-        - "/opt/barbarian/control/start-yarn-rm \
-          --zk_connect={{ .Values.zookeeper.service.name }} \
-          --rm_connect={{ .Values.service.name }} \
-          --log_level={{ .Values.yarn_rm.log_level }} \
-          --log_dir=/var/log/hadoop"
+        - "/opt/barbarian/control/start-yarn-rm"
       volumes:
       - name: yarn-cfg-volume
         configMap:

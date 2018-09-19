@@ -11,6 +11,8 @@ ignite:
   mem: 8Gi
   ps_mem: 7g
 
+  # currently only supports s3a. support for adls, google cloud storage and ceph 
+  # will follow
   secondary_fs_uri: s3a://YOUR_BUCKET/
   hadoop_conf_dir: /opt/hadoop/etc/hadoop
   log_level: INFO

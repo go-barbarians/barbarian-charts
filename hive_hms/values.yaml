@@ -31,6 +31,7 @@ hive_hms:
   db_password: "YOUR_DB_PASSWORD"
 
   log_level: INFO
+  log_dir: /var/log/hive
 
 service:
   name: hms-serv
