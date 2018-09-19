@@ -12,6 +12,9 @@ yarn_rm:
   ps_mem: 4g
 
   log_level: INFO
+  log_dir: "/var/log/hadoop"
+
+  hadoop_conf_dir: "/opt/barbarian/hadoop/etc/hadoop"
 
 service:
   name: yarn-rm-serv

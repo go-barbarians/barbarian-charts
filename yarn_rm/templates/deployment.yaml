@@ -53,4 +53,5 @@ spec:
           --log_dir=/var/log/hadoop"
       volumes:
       - name: yarn-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-hadoop-conf

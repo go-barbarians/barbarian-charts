@@ -35,22 +35,6 @@ spec:
         name: {{ template "fullname" . }}
         securityContext:
           allowPrivilegeEscalation: false
-        env:
-          - name: AWS_ACCESS_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "fullname" . }}
-                key: access-key
-          - name: AWS_SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "fullname" . }}
-                key: secret-key
-          - name: AWS_S3_BUCKET
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "fullname" . }}
-                key: aws-s3-bucket
         volumeMounts:
         - mountPath: /opt/barbarian/ignite/config
           name: igfs-cfg-volume
@@ -68,11 +52,7 @@ spec:
         command:
         - sh
         - -c
-        - "/opt/barbarian/control/start-ignite \
-          --conf_dir=/opt/barbarian/ignite/config \
-          --log_level={{ .Values.ignite.log_level }} \
-          --log_dir=/var/log/ignite \
-          --zk_connect={{ .Values.zookeeper.service.name }}"
+        - "/opt/barbarian/control/start-ignite"
         readinessProbe:
           exec:
             command:
@@ -91,8 +71,10 @@ spec:
           timeoutSeconds: 5
       volumes:
       - name: igfs-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-ignite-conf
       - name: hadoop-cfg-volume
-        emptyDir: {}
+        configMap:
+          name: {{ template "fullname" . }}-hadoop-conf
       - name: igfs-work-volume
         emptyDir: {}

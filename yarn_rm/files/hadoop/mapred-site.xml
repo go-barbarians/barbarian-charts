@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+
+  <property>
+     <name>mapreduce.framework.name</name>
+     <value>yarn</value>
+  </property>
+
+  <property>
+    <name>mapreduce.cluster.local.dir</name>
+    <value>/grid/0/mapred</value>
+  </property>
+
+  <property>
+    <name>yarn.application.classpath</name>
+    <value>/opt/barbarian/tez/conf:/opt/barbarian/hadoop/etc/hadoop:/opt/barbarian/hadoop/share/hadoop/common/*:/opt/barbarian/hadoop/share/hadoop/common/lib/*:/opt/barbarian/hadoop/share/hadoop/hdfs/*:/opt/barbarian/hadoop/share/hadoop/hdfs/lib/*:/opt/barbarian/hadoop/share/hadoop/yarn/*:/opt/barbarian/hadoop/share/hadoop/yarn/lib/*</value>
+  </property>
+
+
+</configuration>

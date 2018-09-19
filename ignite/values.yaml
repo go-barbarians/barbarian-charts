@@ -11,11 +11,21 @@ ignite:
   mem: 8Gi
   ps_mem: 7g
 
-  aws_s3_bucket: YOUR_BUCKET
-  aws_access_key_id: YOUR_ACCESS_KEY_ID
-  aws_secret_access_key: YOUR_SECRET_ACCESS_KEY
-
+  secondary_fs_uri: s3a://YOUR_BUCKET/
+  hadoop_conf_dir: /opt/hadoop/etc/hadoop
   log_level: INFO
+
+  s3a:
+    access_key_id: YOUR_ACCESS_KEY_ID
+    secret_access_key: YOUR_SECRET_ACCESS_KEY
+    endpoint: s3-eu-west-1.amazonaws.com
+    ssl_enabled: true
+    s3guard_ddb:
+      create: true
+      region: eu-west-1
+      capacity:
+        read: 3
+        write: 3
 
 service:
   name: ignite-serv
