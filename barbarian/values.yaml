@@ -2,7 +2,7 @@
 # Declare name/value pairs to be passed into your templates.
 # name: value
 global:
-  repo: YOUR_REPO
+  repo: dockerbarbarians
 
 hive_hms:
   image: hive
@@ -21,6 +21,7 @@ hive_hms:
   # specify the type of database for your hive metastore persistent backend.
   # Barbarian supports the following values here: postgres, mssql or mysql.
   # If you want to use MariaDB, then you should specify "mysql".
+  # NB. currently tested with MariaDB.
   db_type: mysql
 
   # specify the username for your hive metastore persistent backend.
@@ -38,6 +39,7 @@ hive_hms:
 hive_hs2:
   image: hive
   count: 1
+  llapd_enabled: true
   llapd_count: 4
   ps_mem: 8g
   mem: 8Gi
