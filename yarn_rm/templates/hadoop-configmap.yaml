@@ -20,3 +20,5 @@ data:
 {{ tpl (.Files.Get "files/hadoop/capacity-scheduler.xml") . | indent 4 }}
   log4j.properties: |-
 {{ tpl (.Files.Get "files/hadoop/log4j.properties") . | indent 4 }}
+  hadoop-env.sh: |-
+{{ tpl (.Files.Get "files/hadoop/hadoop-env.sh") . | indent 4 }}
