@@ -1,23 +1,23 @@
 dependencies:
   - name: zookeeper
-    repository: http://charts.barbarians.io/barbarian/zookeeper
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: ignite
-    repository: http://charts.barbarians.io/barbarian/ignite
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: yarn_nm
-    repository: http://charts.barbarians.io/barbarian/yarn_nm
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: yarn_rm
-    repository: http://charts.barbarians.io/barbarian/yarn_rm
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: hive_hms
-    repository: http://charts.barbarians.io/barbarian/hive_hms
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: hive_hs2
-    repository: http://charts.barbarians.io/barbarian/hive_hs2
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: mariadb
     repository: https://kubernetes-charts.storage.googleapis.com/
     version: 4.x.x
-    condition: hive_hms.db_auto = true
+    condition: hive_hms.db_auto
