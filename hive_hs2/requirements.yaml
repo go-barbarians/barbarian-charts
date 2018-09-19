@@ -1,13 +1,13 @@
 dependencies:
   - name: zookeeper
-    repository: http://charts.barbarians.io/barbarian/zookeeper
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: yarn_rm
-    repository: http://charts.barbarians.io/barbarian/yarn_rm
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: ignite
-    repository: http://charts.barbarians.io/barbarian/ignite
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0
   - name: hive_hms
-    repository: http://charts.barbarians.io/barbarian/hive_hms
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0

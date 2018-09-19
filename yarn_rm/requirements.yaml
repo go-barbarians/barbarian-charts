@@ -1,4 +1,4 @@
 dependencies:
   - name: zookeeper
-    repository: http://charts.barbarians.io/barbarian/zookeeper
+    repository: http://charts.barbarians.io/barbarian
     version: 0.1.0-badh0.1.0

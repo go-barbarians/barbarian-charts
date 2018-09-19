@@ -1,15 +1,15 @@
 dependencies:
 - name: zookeeper
-  repository: file://../zookeeper
+  repository: http://charts.barbarians.io/barbarian
   version: 0.1.0-badh0.1.0
 - name: ignite
-  repository: file://../ignite
+  repository: http://charts.barbarians.io/barbarian
   version: 0.1.0-badh0.1.0
 - name: yarn_rm
-  repository: file://../yarn_rm
+  repository: http://charts.barbarians.io/barbarian
   version: 0.1.0-badh0.1.0
 - name: mariadb
   repository: https://kubernetes-charts.storage.googleapis.com/
   version: 4.4.2
-digest: sha256:a40952d9f924242628445247078da62435225514f4e2767a4f09ca7390305c58
-generated: 2018-09-19T19:34:50.281647104+02:00
+digest: sha256:d1e31a715d05ca541d148b5f0929169222ab29f3157ba2d813c5e9fabf6cc99b
+generated: 2018-09-19T21:12:19.88497765Z

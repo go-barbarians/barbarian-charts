@@ -1,12 +1,12 @@
 dependencies:
 - name: zookeeper
-  repository: file://../zookeeper
+  repository: http://charts.barbarians.io/barbarian
   version: 0.1.0-badh0.1.0
 - name: ignite
-  repository: file://../ignite
+  repository: http://charts.barbarians.io/barbarian
   version: 0.1.0-badh0.1.0
 - name: yarn_rm
-  repository: file://../yarn_rm
+  repository: http://charts.barbarians.io/barbarian
   version: 0.1.0-badh0.1.0
-digest: sha256:e5be57bc8c265057d05d51563647a632be59fe01c18a6997565fff1c8aefb4d5
-generated: 2018-09-19T19:10:52.450807108+02:00
+digest: sha256:38af1a5b3dc588a1bc44776611ac7229b5780b14f3e94d1cbce9a3352349b4ea
+generated: 2018-09-19T21:10:17.780188348Z
