@@ -38,8 +38,9 @@ Barbarian exposes many configuration parameters. Some important ones are listed 
 | hive_hms.db_type | mysql | Currently only tested against Mariadb
 | hive_hms.db_driver | org.mariadb.jdbc.Driver | Currently only tested against Mariadb
 | hive_hs2.llapd_enabled | true | automatically deploy Hive LLAP? |
-| hive_hms.llapd_count | 4 | How many LLAP daemons to deploy |
-| hive_hms.llapd_mem | 24g | How much RAM to allocate to each LLAP daemon |
+| hive_hs2.llapd_count | 4 | How many LLAP daemons to deploy |
+| hive_hs2.llapd_mem | 24g | How much RAM to allocate to each LLAP daemon |
+| hive_hs2.ingress_enabled | false | Expose HiveServer2 to the outside? |
 | yarn_rm.count | 1 | How many YARN RMs to deploy. Currently only supports 1 |
 | yarn_nm.count | 5 | How many YARN NodeManagers to deploy |
 | zookeeper.count | 5 | How many ZooKeepers to deploy |
