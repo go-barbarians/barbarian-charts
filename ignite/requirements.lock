@@ -1,6 +1,0 @@
-dependencies:
-- name: zookeeper
-  repository: http://charts.barbarians.io/barbarian
-  version: 0.1.0-badh0.1.0
-digest: sha256:c212e6ac9de44d96948490e1238e5388c53afeec1b77cc7743d229a28c77edea
-generated: 2018-09-19T21:03:03.823834179Z
