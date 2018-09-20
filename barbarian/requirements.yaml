@@ -13,10 +13,10 @@ dependencies:
     version: 0.1.0-badh0.1.0
   - name: hive_hms
     repository: http://charts.barbarians.io/barbarian
-    version: 0.1.0-badh0.1.0
+    version: 0.1.1-badh0.1.0
   - name: hive_hs2
     repository: http://charts.barbarians.io/barbarian
-    version: 0.1.0-badh0.1.0
+    version: 0.1.1-badh0.1.0
   - name: mariadb
     repository: https://kubernetes-charts.storage.googleapis.com/
     version: 4.x.x

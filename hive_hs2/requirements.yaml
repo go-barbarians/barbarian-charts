@@ -10,4 +10,4 @@ dependencies:
     version: 0.1.0-badh0.1.0
   - name: hive_hms
     repository: http://charts.barbarians.io/barbarian
-    version: 0.1.0-badh0.1.0
+    version: ^0.1.1-badh0.1.0
