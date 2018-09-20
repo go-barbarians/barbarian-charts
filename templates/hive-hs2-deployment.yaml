@@ -8,6 +8,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
+  serviceName: {{ .Values.hive_hs2.service.name }}
   replicas: {{ .Values.hive_hs2.count }}
   updateStrategy:
     type: RollingUpdate

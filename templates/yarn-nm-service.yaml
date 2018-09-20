@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.yarn_nm.service.name }}
   labels:
-    app: {{ template "fullname" . }}-yarn-nm
+    app: yarn-nm
 spec:
   ports:
   - port: 45454
@@ -18,4 +18,4 @@ spec:
     name: llap-rpc
   clusterIP: None
   selector:
-    app: {{ template "fullname" . }}-yarn-nm
+    app: yarn-nm
