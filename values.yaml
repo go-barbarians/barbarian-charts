@@ -57,6 +57,10 @@ hive_hs2:
   cpu: 1
   llapd_mem: 24g
   log_level: INFO
+
+  # if you want to expose HiveServer2 to the outside world
+  ingress_enabled: false
+
   service:
     name: hs2-serv
 
