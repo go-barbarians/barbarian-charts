@@ -22,6 +22,7 @@ This repo contains the Helm charts for installing the Barbarian big data system 
 
 Install the charts with the following commands. Note that some configuration parameters must be supplied.
 
+- ```helm repo add barbarians http://charts.barbarians.org/barbarian```
 - ```helm install -f my-custom-config.yaml barbarians/barbarian```
 
 ## Configuration Parameters
