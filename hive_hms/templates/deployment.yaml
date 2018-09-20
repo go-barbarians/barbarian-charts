@@ -29,29 +29,6 @@ spec:
           requests:
             memory: "{{ .Values.hive_hms.mem }}"
             cpu: "{{ .Values.hive_hms.cpu }}"
-        env:
-          - name: HMS_DB_USERNAME
-          {{- if .Values.hive_hms.db_auto }}
-            value: {{ .Values.mariadb.db.user | quote }}
-          {{- else }}
-            value: {{ .Values.hive_hms.db_user | quote }}
-          {{- end }}
-          - name: HMS_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-              {{- if .Values.hive_hms.db_auto }}
-                name: {{ template "mariadb.fullname" . }}
-                key: mariadb-password
-              {{- else }}
-                name: {{ template "fullname" . }}
-                key: password
-              {{- end }}
-          - name: HMS_DB_URI
-          {{- if .Values.hive_hms.db_auto }}
-            value: {{ printf "jdbc:mariadb://%s:3306/%s" (include "mariadb.fullname" .) .Values.mariadb.db.name | quote }}
-          {{- else }}
-            value: {{ .Values.hive_hms.db_uri | quote }}
-          {{- end }}
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
           name: yarn-cfg-volume
@@ -68,6 +45,39 @@ spec:
         - sh
         - -c
         - "/opt/barbarian/control/start-metastore"
+      initContainers:
+      - name: init-hive-hms
+        image: {{ .Values.global.repo }}/{{ .Values.hive_hms.image }}
+        command:
+        - sh
+        - -c
+        - "/opt/barbarian/hive/bin/schematool -initSchema \
+          -dbType {{ .Values.hive_hms.db_type }} \
+          {{- if .Values.hive_hms.db_auto }}
+          -userName {{ .Values.mariadb.db.user }} \
+          {{- else }}
+          -userName {{ .Values.hive_hms.db_username }} \
+          {{- end }}
+          {{- if .Values.hive_hms.db_auto }}
+          -passWord {{ .Values.mariadb.db.password }} \
+          {{- else }}
+          -passWord {{ .Values.hive_hms.db_password }} \
+          {{- end }} 
+          {{- if .Values.hive_hms.db_auto }}
+          -url {{ printf "jdbc:mariadb://%s:3306/%s" (include "mariadb.fullname" .) .Values.mariadb.db.name }} \
+          {{- else }}
+          -url {{ .Values.hive_hms.db_uri }} \ 
+          {{- end }}
+          -ifNotExists"
+        volumeMounts:
+        - name: hive-cfg-volume
+          mountPath: "/opt/barbarian/hive/conf"
+        - name: tez-cfg-volume
+          mountPath: "/opt/barbarian/tez/conf"
+        - name: yarn-cfg-volume
+          mountPath: "/opt/barbarian/hadoop/etc/hadoop"
+        - name: slider-cfg-volume
+          mountPath: "/opt/barbarian/slider/conf"
       volumes:
       - name: yarn-cfg-volume
         configMap:

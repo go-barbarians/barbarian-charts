@@ -598,6 +598,11 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionPassword</name>
+    {{- if .Values.hive_hms.db_auto }}
+    <value>{{ .Values.mariadb.db.password }}</value>
+    {{- else }}
+    <value>{{ .Values.hive_hms.db_password }}</value>
+    {{- end }}
     <value>{{ .Values.hive_hms.db_password }}</value>
     <description>password to use against metastore database</description>
   </property>
@@ -613,7 +618,11 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>{{ .Values.hive_hms.db_uri }}</value>
+    {{- if .Values.hive_hms.db_auto }}
+      <value>{{ printf "jdbc:mariadb://%s:3306/%s" (include "mariadb.fullname" .) .Values.mariadb.db.name }}</value>
+    {{- else }}
+      <value>{{ .Values.hive_hms.db_uri }}</value>
+    {{- end }}
     <description>
       JDBC connect string for a JDBC metastore.
       To use SSL to encrypt/authenticate the connection, provide database-specific SSL flag in the connection URL.
@@ -1156,7 +1165,11 @@
   </property>
   <property>
     <name>javax.jdo.option.ConnectionUserName</name>
+    {{- if .Values.hive_hms.db_auto }}
+    <value>{{ .Values.mariadb.db.user }}</value>
+    {{- else }}
     <value>{{ .Values.hive_hms.db_username }}</value>
+    {{- end }}
     <description>Username to use against metastore database</description>
   </property>
   <property>
