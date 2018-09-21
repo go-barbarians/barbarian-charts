@@ -48,7 +48,7 @@ This repo contains the Helm charts for installing the Barbarian Data System on K
 Install the Barbarian Data System with the following commands.
 
 - ```helm repo add barbarians http://charts.barbarians.org/barbarian```
-- ```helm install -f my-custom-config.yaml barbarians/barbarian```
+- ```helm install --name my-barbarian barbarians/barbarian```
 
 ## Uninstalling
 
