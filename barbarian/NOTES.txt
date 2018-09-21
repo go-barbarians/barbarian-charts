@@ -1,0 +1,2 @@
+To expose ingress traffic to Hiveserver2 (thrift port 10000), set hive_hs2.ingress_enabled = true
+ 
