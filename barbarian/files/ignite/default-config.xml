@@ -31,16 +31,45 @@
                     <!-- IGFS name you will use to access IGFS through Hadoop API. -->
                     <property name="name" value="igfs"/>
                     {{- if .Values.ignite.secondary_fs_enabled }}
+                      {{- if .Values.ignite.hybrid }}
+                    <property name="defaultMode" value="PRIMARY" />
+                      {{- else }}
                     <property name="defaultMode" value="DUAL_SYNC" />
+                      {{- end }}
                     {{- else }}
                     <property name="defaultMode" value="PRIMARY" />
                     {{- end }}
+
+                    {{- if .Values.ignite.hybrid }}
+                    <property name="pathModes">
+                        <map>
+                            <entry key="/external/.*" value="DUAL_SYNC"/>      
+                        </map>
+                    </property>
+                    {{- end }}
+
                     <!-- Configure TCP endpoint for communication with the file system instance. -->
                     <property name="ipcEndpointConfiguration">
                         <bean class="org.apache.ignite.igfs.IgfsIpcEndpointConfiguration">
                             <property name="type" value="TCP" />
                             <property name="host" value="0.0.0.0" />
                             <property name="port" value="10500" />
+                        </bean>
+                    </property>
+
+                    <property name="dataCacheConfiguration">
+                        <bean class="org.apache.ignite.CacheConfiguration">
+                            <property name="atomicityMode" value="transactional" />
+                            <property name="cacheMode" value="PARTITIONED" />
+                            <property name="backups" value="{{ (sub .Values.ignite.data.replicas 1) }}" />
+                        </bean>
+                    </property>
+
+                    <property name="metaCacheConfiguration">
+                        <bean class="org.apache.ignite.CacheConfiguration">
+                            <property name="atomicityMode" value="transactional" />
+                            <property name="cacheMode" value="PARTITIONED" />
+                            <property name="backups" value="{{ (sub .Values.ignite.meta.replicas 1) }}" />
                         </bean>
                     </property>
 
