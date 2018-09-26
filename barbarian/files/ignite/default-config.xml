@@ -31,11 +31,7 @@
                     <!-- IGFS name you will use to access IGFS through Hadoop API. -->
                     <property name="name" value="igfs"/>
                     {{- if .Values.ignite.secondary_fs_enabled }}
-                      {{- if .Values.ignite.hybrid }}
-                    <property name="defaultMode" value="PRIMARY" />
-                      {{- else }}
                     <property name="defaultMode" value="DUAL_SYNC" />
-                      {{- end }}
                     {{- else }}
                     <property name="defaultMode" value="PRIMARY" />
                     {{- end }}
@@ -44,6 +40,7 @@
                     <property name="pathModes">
                         <map>
                             <entry key="/external/.*" value="DUAL_SYNC"/>      
+                            <entry key="/.*" value="PRIMARY"/>      
                         </map>
                     </property>
                     {{- end }}
