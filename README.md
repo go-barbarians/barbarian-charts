@@ -10,7 +10,7 @@ This release brings:
 
 Barbarian is designed to run as a horizontally scalable parallel, distributed, *in memory* data warehouse - a bit like SAP Hana™ but with a low TCO.
 
-Barbarian can ingest data from Amazon S3 or a remote HDFS cluster for high performance, low latency analysis, or alternatively Barbarian can be configured to run as a Big Data solution accessing Amazon S3 - using its own storage as an in-memory write-through cache. Lastly, Barbarian supports hybrid mode, whereby Barbarian primarily operates as an in-memory data processing system but mounts the external storage system at the path ```/external```.
+Barbarian can ingest data from Amazon S3 or a remote HDFS cluster for high performance, low latency analysis, or alternatively Barbarian can be configured to run as a Big Data solution accessing Amazon S3 - using its own storage as an in-memory write-through cache. Lastly, Barbarian supports hybrid mode, whereby Barbarian mounts common paths in-memory and acts as a write-through cache of all other paths.
 
 We will be adding support for more storage backends including Azure ADLS, GCP Cloud Storage, and Ceph in coming releases.
 

@@ -39,8 +39,11 @@
                     {{- if .Values.ignite.hybrid }}
                     <property name="pathModes">
                         <map>
-                            <entry key="/external/.*" value="DUAL_SYNC"/>      
-                            <entry key="/.*" value="PRIMARY"/>      
+                            <entry key="/apps/.*" value="PRIMARY"/>      
+                            <entry key="/tmp/.*" value="PRIMARY"/>      
+                            <entry key="/user/.*" value="PRIMARY"/>      
+                            <entry key="/hive/.*" value="PRIMARY"/>      
+                            <entry key="/slider/.*" value="PRIMARY"/>      
                         </map>
                     </property>
                     {{- end }}
