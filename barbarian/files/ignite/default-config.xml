@@ -58,16 +58,16 @@
                     </property>
 
                     <property name="dataCacheConfiguration">
-                        <bean class="org.apache.ignite.CacheConfiguration">
-                            <property name="atomicityMode" value="transactional" />
+                        <bean class="org.apache.ignite.configuration.CacheConfiguration">
+                            <property name="atomicityMode" value="TRANSACTIONAL" />
                             <property name="cacheMode" value="PARTITIONED" />
                             <property name="backups" value="{{ (sub .Values.ignite.data.replicas 1) }}" />
                         </bean>
                     </property>
 
                     <property name="metaCacheConfiguration">
-                        <bean class="org.apache.ignite.CacheConfiguration">
-                            <property name="atomicityMode" value="transactional" />
+                        <bean class="org.apache.ignite.configuration.CacheConfiguration">
+                            <property name="atomicityMode" value="TRANSACTIONAL" />
                             <property name="cacheMode" value="PARTITIONED" />
                             <property name="backups" value="{{ (sub .Values.ignite.meta.replicas 1) }}" />
                         </bean>
