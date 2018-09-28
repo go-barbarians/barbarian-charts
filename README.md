@@ -36,7 +36,7 @@ INSERT INTO mytable SELECT id, value1, value2 FROM mys3table;
 ```
 
 Read more at:
-https://barbarians.io/
+https://barbarians.io/, or read the docs at http://docs.barbarians.io/. 
 
 ## Helm Charts
 
