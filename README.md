@@ -3,7 +3,7 @@
 The Barbarian Data System is the world's best cloud-first, cloud-agnostic data processing system founded on Apache Hadoop for enterprise-ready, low-latency parallel distributed data processing.
 
 This release brings:
-- Apache Hadoop 2.8.4
+- Apache Hadoop 3.1.2
 - Apache Hive 3.1, with LLAP & Tez
 - Apache Zookeeper 3.5
 - Apache Ignite 2.6
@@ -121,7 +121,7 @@ Barbarian exposes many configuration parameters. Some important ones are listed 
 
 ## Troubleshooting
 
-If you encounter provisioning issues with MariaDb where it gets stuck on "pending", this is likely to be because you haven't enabled persistent storage claims. To enable persistent storage on AWS EKS you can run something like:
+If you encounter provisioning issues with MariaDb where it gets stuck on "pending", this could be because you haven't enabled persistent storage claims. To enable persistent storage on AWS EKS you can run something like:
 
 ```
 echo "\
