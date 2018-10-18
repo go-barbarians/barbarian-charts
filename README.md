@@ -3,7 +3,7 @@
 The Barbarian Data System is the world's best cloud-first, cloud-agnostic data processing system founded on Apache Hadoop for enterprise-ready, low-latency parallel distributed data processing.
 
 This release brings:
-- Apache Hadoop 2.8.4
+- Apache Hadoop 3.1.2
 - Apache Hive 3.1, with LLAP & Tez
 - Apache Zookeeper 3.5
 - Apache Ignite 2.6
@@ -94,8 +94,8 @@ Barbarian exposes many configuration parameters. Some important ones are listed 
 | hive_hms.db_type | mysql | Currently only tested against Mariadb
 | hive_hms.db_driver | org.mariadb.jdbc.Driver | Currently only tested against Mariadb
 | hive_hs2.llapd_enabled | true | automatically deploy Hive LLAP? |
-| hive_hs2.llapd_count | 4 | How many LLAP daemons to deploy. You can elastically scale Tez but not LLAP, so choose wisely  |
-| hive_hs2.llapd_mem | 2g | How much RAM to allocate to each LLAP daemon in production contexts this should be at least 24G, preferably more |
+| hive_hs2.llapd_count | 3 | How many LLAP daemons to deploy. You can elastically scale Tez but not LLAP, so choose wisely  |
+| hive_hs2.llapd_mem | 4g | How much RAM to allocate to each LLAP daemon in production contexts this should be at least 24G, preferably more |
 | hive_hs2.ingress_enabled | false | should Hiveserver2 be exposed to the outside? |
 | yarn_rm.ha_enabled | true | Should YARN ResourceManager be deployed as an HA pair? |
 | yarn_nm.count | 5 | How many YARN NodeManagers to deploy |
