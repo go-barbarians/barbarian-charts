@@ -85,7 +85,7 @@ yarn_nm:
   count: 5
   cpu: 2
   mem: 4Gi
-  container_mem: 4g
+  container_mem_mb: 4096
   container_vcpu: 2
 
   service:
