@@ -39,12 +39,16 @@ spec:
           value: {{ .Values.global.bash_readline_apk }}
         - name: BASH_NCURSES_APK
           value: {{ .Values.global.bash_ncurses_apk }}
+        - name: HADOOP_OPTS
+          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1"
         name: {{ template "fullname" . }}-hive-hs2
         securityContext:
           allowPrivilegeEscalation: false
         resources:
+          limits:
+            memory: {{ .Values.hive_hs2.mem }}
           requests:
-            memory: "{{ .Values.hive_hs2.mem }}"
+            memory: {{ .Values.hive_hs2.mem }}
             cpu: "{{ .Values.hive_hs2.cpu }}"
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop

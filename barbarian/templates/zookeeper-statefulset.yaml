@@ -62,9 +62,11 @@ spec:
         - name: datadir
           mountPath: /opt/barbarian/zookeeper/data
         resources:
+          limits:
+            memory: {{ .Values.zookeeper.mem }}
           requests:
-            memory: "{{ .Values.zookeeper.mem }}"
-            cpu: "{{ .Values.zookeeper.cpu }}"
+            memory: {{ .Values.zookeeper.mem }}
+            cpu: {{ .Values.zookeeper.cpu }}
         ports:
         - containerPort: 2181
           name: client

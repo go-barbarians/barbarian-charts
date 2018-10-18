@@ -44,13 +44,17 @@ spec:
           value: {{ .Values.global.bash_readline_apk }}
         - name: BASH_NCURSES_APK
           value: {{ .Values.global.bash_ncurses_apk }}
+        - name: HADOOP_OPTS
+          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1"
         name: {{ template "fullname" . }}-yarn-rm
         securityContext:
           allowPrivilegeEscalation: false
         resources:
+          limits:
+            memory: {{ .Values.yarn_rm.mem }}
           requests:
-            memory: "{{ .Values.yarn_rm.mem }}"
-            cpu: "{{ .Values.yarn_rm.cpu }}"
+            memory: {{ .Values.yarn_rm.mem }}
+            cpu: {{ .Values.yarn_rm.cpu }}
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
           name: yarn-cfg-volume

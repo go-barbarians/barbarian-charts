@@ -44,9 +44,11 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         resources:
+          limits:
+            memory: {{ .Values.yarn_nm.mem }}
           requests:
-            memory: "{{ .Values.yarn_nm.mem }}"
-            cpu: "{{ .Values.yarn_nm.cpu }}"
+            memory: {{ .Values.yarn_nm.mem }}
+            cpu: {{ .Values.yarn_nm.cpu }}
         volumeMounts:
         - mountPath: /opt/barbarian/hadoop/etc/hadoop
           name: yarn-cfg-volume
